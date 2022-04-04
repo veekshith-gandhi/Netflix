@@ -1,8 +1,8 @@
 /** @format */
 
-import Features from "../Components/Features";
-import List from "../Components/List";
-import Navbar from "../Components/Navbar";
+import Features from "../../Components/Features";
+import List from "../../Components/List";
+import Navbar from "../../Components/Navbar";
 import "./home.scss";
 
 const Home = () => {
@@ -10,7 +10,6 @@ const Home = () => {
     <div className="home">
       <Navbar />
       <Features />
-      <List />
       <List />
       <List />
       <List />
