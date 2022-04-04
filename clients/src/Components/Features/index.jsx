@@ -35,7 +35,7 @@ const Features = ({ type }) => {
       />
       <div className="info">
         <img
-          src="http://assets.stickpng.com/images/610fb4ce92da260004e3685e.png"
+          src="https://w7.pngwing.com/pngs/613/889/png-transparent-mitch-buchannon-paramount-s-film-poster-movie-titles-text-poster-logo.png"
           alt="title"
         />
         <span className="description">
