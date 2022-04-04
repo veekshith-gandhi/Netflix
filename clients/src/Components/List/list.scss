@@ -1,0 +1,43 @@
+/** @format */
+
+.list {
+  width: 100%;
+  margin-top: 20px;
+  .wrapper {
+    position: relative;
+    .arrow {
+      color: aliceblue;
+      width: 50px;
+      height: 100%;
+      position: absolute;
+      background-color: #838181fc;
+      z-index: 99;
+      top: 0;
+      bottom: 0;
+      cursor: pointer;
+      margin: auto;
+      &.left {
+        left: 0;
+      }
+      &.right {
+        right: 0;
+      }
+    }
+    .listContainer {
+      display: flex;
+      margin-left: 50px;
+      width: max-content;
+      margin-top: 10px;
+      transform: translateX(0px);
+      transition: all 1s ease;
+    }
+  }
+
+  span {
+    font-size: 25px;
+    color: aliceblue;
+    margin-left: 20px;
+    font-weight: 500;
+    font-weight: 500;
+  }
+}
