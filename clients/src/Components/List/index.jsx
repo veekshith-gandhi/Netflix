@@ -35,13 +35,13 @@ const List = () => {
           onClick={() => handleDirection("left")}
         />
         <div className="listContainer" ref={listRef}>
-          <ListItem />
-          <ListItem />
-          <ListItem />
-          <ListItem />
-          <ListItem />
-          <ListItem />
-          <ListItem />
+          <ListItem index={0} />
+          <ListItem index={1} />
+          <ListItem index={2} />
+          <ListItem index={3} />
+          <ListItem index={4} />
+          <ListItem index={5} />
+          <ListItem index={6} />
         </div>
         <FontAwesomeIcon
           className="arrow right"

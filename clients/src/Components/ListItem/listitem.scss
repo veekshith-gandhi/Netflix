@@ -4,6 +4,71 @@
   width: 225px;
   height: 120px;
   color: black;
-  background-color: aliceblue;
+  background: var(--main-color);
   margin-right: 10px;
+  overflow: hidden;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+  video {
+    width: 100%;
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+  }
+  .iteminfo {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    .itemicon {
+      color: white;
+      margin-right: 5px;
+      margin-left: 5px;
+
+      .itemlisticon {
+        margin-right: 15px;
+        border: 2px solid white;
+        padding: 5px;
+        border-radius: 50%;
+      }
+    }
+    .itemdesc {
+      color: aliceblue;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .itemtimeinfo {
+      display: flex;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-left: 0;
+      align-items: center;
+      .limit {
+        border: 1px solid grey;
+        padding: 1px 3px;
+        margin: 0 10px;
+      }
+      span {
+        font-size: 16px;
+        font-weight: 400;
+        color: gray;
+        margin-left: 6px;
+      }
+    }
+    .genre {
+      font-size: 16px;
+      color: grey;
+      margin-left: 5px;
+    }
+  }
+  &:hover {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    top: -150px;
+  }
 }
