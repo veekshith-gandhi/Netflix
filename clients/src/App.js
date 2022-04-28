@@ -2,11 +2,13 @@
 
 import Home from "./Pages/Home/index";
 import "./app.scss";
+import Watch from "./Pages/Watch";
 
 function App() {
   return (
     <div>
-      <Home />
+      <Watch />
+      {/* <Home /> */}
     </div>
   );
 }

@@ -10,6 +10,7 @@ const generateToken = (user) => {
     {
       id: user._id,
       email: user.email,
+      isAdmin: user.isAdmin,
     },
     process.env.SECRET_KEY,
     { expiresIn: "1d" }
@@ -60,7 +61,7 @@ const login = async (req, res) => {
 
   let isMatch;
   try {
-    //filtered user
+    //filtered user=hashed and password is  normal
     isMatch = await user.comparePassword(req.body.password);
     if (!isMatch)
       return res.status(401).send({ msg: "invalid email or password" });
@@ -69,7 +70,10 @@ const login = async (req, res) => {
   }
 
   const token = generateToken(user);
-  return res.status(200).json({ token, id: user._id, email: user.email });
+  console.log(token);
+  return res
+    .status(200)
+    .json({ token, id: user._id, email: user.email, isAdmin: user.isAdmin });
 };
 
 module.exports = { register, login };
