@@ -1,0 +1,19 @@
+/** @format */
+
+.watch-container {
+  width: 100vw;
+  height: 100vh;
+  .nav-back {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    z-index: 2;
+    color: azure;
+  }
+  .video-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

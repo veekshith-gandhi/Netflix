@@ -48,11 +48,13 @@ const delet = async (req, res) => {
 const get = async (req, res) => {
   if (req.user.isAdmin) {
     try {
-      await Movies.findByIdAndDelete(req.params.id);
-      return res.status(201).send({ msg: "movie deleted" });
+      const movie = await Movies.findById(req.params.id);
+      return res.status(201).send(movie);
     } catch (error) {
       return res.status(500).send({ msg: "Something went wrong", error });
     }
+  } else {
+    return res.status(500).send({ msg: "Something went wrong", error });
   }
 };
 //RANDOM
@@ -71,11 +73,24 @@ const getRandom = async (req, res) => {
         { $sample: { size: 1 } },
       ]);
     }
-    await Movies.findByIdAndDelete(req.params.id);
-    return res.status(201).send({ msg: "movie deleted" });
+    // const movie = await Movies.findById(req.params.id);
+    return res.status(201).send(movie);
   } catch (error) {
     return res.status(500).send({ msg: "Something went wrong", error });
   }
 };
 
-module.exports = { create, update, delet, getRandom, get };
+const getAll = async (req, res) => {
+  if (req.user.isAdmin) {
+    try {
+      const data = await Movies.find();
+      if (data) return res.status(201).send(data);
+    } catch (error) {
+      return res.status(500).send({ msg: "Something went wrong", error });
+    }
+  } else {
+    return res.status(401).send({ msg: "Something went wrong", error });
+  }
+};
+
+module.exports = { create, update, delet, getRandom, get, getAll };

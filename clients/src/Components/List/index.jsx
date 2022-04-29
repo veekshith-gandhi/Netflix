@@ -7,7 +7,7 @@ import "./list.scss";
 import { useRef } from "react";
 import { useState } from "react";
 
-const List = () => {
+const List = ({ list }) => {
   const listRef = useRef();
   const [isSlider, setIsSlider] = useState(0);
   const [isMoved, setIsMoved] = useState(false);
@@ -26,7 +26,7 @@ const List = () => {
   };
   return (
     <div className="list">
-      <span>Continue to watch</span>
+      <span>{list.title}</span>
       <div className="wrapper">
         <FontAwesomeIcon
           className="arrow left"
@@ -35,13 +35,9 @@ const List = () => {
           onClick={() => handleDirection("left")}
         />
         <div className="listContainer" ref={listRef}>
-          <ListItem index={0} />
-          <ListItem index={1} />
-          <ListItem index={2} />
-          <ListItem index={3} />
-          <ListItem index={4} />
-          <ListItem index={5} />
-          <ListItem index={6} />
+          {list.content.map((item, i) => (
+            <ListItem index={i} key={i} item={item} />
+          ))}
         </div>
         <FontAwesomeIcon
           className="arrow right"

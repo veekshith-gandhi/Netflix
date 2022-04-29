@@ -3,13 +3,35 @@
 import "./features.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle, faPlay } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { API, token } from "../../api";
 
 const Features = ({ type }) => {
+  const [isType, setIsType] = useState("");
+
+  useEffect(() => {
+    const getRandomType = async () => {
+      const Authstr = "Baerer ".concat(token);
+      try {
+        const { data } = await axios.get(`${API}/movie/random?type=${type}`, {
+          headers: {
+            Authorization: Authstr,
+          },
+        });
+        setIsType(data[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getRandomType();
+  }, [type]);
+  // console.log(isType);
   return (
     <div className="featured">
       {type && (
         <div className="category">
-          <span>{type === "movie" ? "Movies" : "Series"}</span>
+          <span>{type === "Movies" ? "Movies" : "Series"}</span>
           <select name="genre" id="genre">
             <option>Genre</option>
             <option className="ad" value="adventure">
@@ -29,19 +51,10 @@ const Features = ({ type }) => {
           </select>
         </div>
       )}
-      <img
-        src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/teen-movies-netflix-kissing-booth-2-1596718460.jpg?crop=0.5625xw:1xh;center,top&resize=480:*"
-        alt="netflix"
-      />
+      <img src={isType.img} alt="netflix" />
       <div className="info">
-        <img
-          src="https://w7.pngwing.com/pngs/613/889/png-transparent-mitch-buchannon-paramount-s-film-poster-movie-titles-text-poster-logo.png"
-          alt="title"
-        />
-        <span className="description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere sunt
-          eaque corporis debitis, ab officia minus qui explicabo voluptatibus
-        </span>
+        <img src={isType.imgsm} alt="title" />
+        <span className="description">{isType.desc}</span>
         <div className="button">
           <button className="play">
             <FontAwesomeIcon icon={faPlay} />

@@ -3,6 +3,7 @@
 const authentication = require("../middleware/verify.token");
 const {
   create,
+  getAll,
   delet,
   get,
   getRandom,
@@ -13,8 +14,9 @@ const router = require("express").Router();
 
 router.post("/", authentication, create);
 router.put("/:id", authentication, create);
-router.put("/:id", authentication, delet);
-router.put("/random", authentication, getRandom);
-router.put("/:id", authentication, get);
+router.delete("/:id", authentication, delet);
+router.get("/random", authentication, getRandom);
+router.get("/find/:id", authentication, get);
+router.get("/all/:id", authentication, getAll);
 
 module.exports = router;

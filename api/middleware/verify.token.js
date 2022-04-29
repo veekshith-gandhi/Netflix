@@ -15,7 +15,9 @@ const verifyToken = (token) => {
 
 const authentication = async (req, res, next) => {
   try {
-    const authToken = req.headers.token;
+    const authToken = req.headers.authorization;
+    // console.log(authToken);
+
     if (!authToken) {
       return res.status(401).send({ msg: "token not present " });
     } else {

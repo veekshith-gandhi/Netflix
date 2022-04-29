@@ -71,6 +71,11 @@ const login = async (req, res) => {
 
   const token = generateToken(user);
   console.log(token);
+  // res.cookie("TOKEN", token, {
+  //   maxAge: Number(3600 * 10),
+  //   httpOnly: true,
+  //   secure: true,
+  // });
   return res
     .status(200)
     .json({ token, id: user._id, email: user.email, isAdmin: user.isAdmin });
